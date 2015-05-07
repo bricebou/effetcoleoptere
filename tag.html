@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr" class="no-js">
+  <head>
+    {% include 'inc/head.html' %}
+  </head>
+
+  <body>
+    <div id="wrapper">
+      <header>
+          {% include 'inc/header.html' %}
+      </header>
+
+      <div id="main" class="row">
+
+        <nav class="cute-4-laptop cute-4-tablet cute-4-phone">
+            {% include 'inc/nav.html' %}
+        </nav>
+
+        <section id="content" class="cute-8-laptop cute-8-tablet cute-8-phone">
+          
+          <h2 class="page_title">Émissions avec #{{ current_tag }}</h2>
+            
+            {% for page in pages %}
+              {% if page.meta.tags_array and current_tag in page.meta.tags_array %}
+                <h3><a href="{{ base_url }}/{{ page.url }}">{{ page.meta.title }}</a></h3>
+                {{ CSVtoTable(page.meta.csv) }}
+              {% endif %}
+            {% endfor %}
+
+        </section>
+      </div> <!-- END .row -->
+
+      <footer>
+        {% include 'inc/footer.html' %}
+      </footer>
+
+    </div> <!-- END #wrapper -->
+
+  </body>
+</html>

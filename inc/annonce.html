@@ -1,0 +1,17 @@
+<div id="annonce">
+	<div class="row">
+		<div class="cute-12-laptop cute-12-tablet cute-12-phone">
+		 	{% set annonce = "" %}
+			
+			{% if annonce is not empty %}
+				<p>{{ annonce }}</p>
+			{% else %}
+				{% if date(pages[0].meta.date) < date('-14days', 'Europe/Paris') %}
+					<p>Le {{ pages[0].meta.date|date_modify("+4 week")|date("m/d/Y")|datefr(config.date_format) }} l'Effet Coléoptère revient avec une nouvelle émission.</p>
+			  {% else %}
+			  	<p>L'Effet Coléoptère revient le {{ pages[0].meta.date|date_modify("+14 day")|date("m/d/Y")|datefr(config.date_format) }} avec une rediffusion de l'émission {{ pages[0].meta.title }}.</p>
+				{% endif %}
+			{% endif %}
+		</div>
+	</div>
+</div>

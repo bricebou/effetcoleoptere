@@ -1,0 +1,22 @@
+<!-- Made with PhileCMS -->
+<meta charset="{{ config.charset }}" />
+<base href="{{ base_url }}/" />
+<title>{% if meta.title %}{{ meta.title }} | {% endif %}{{ site_title }}</title>
+{% if meta.description %}
+<meta name="description" content="{{ meta.description }}">
+{% endif %}{% if meta.robots %}
+<meta name="robots" content="{{ meta.robots }}">
+{% endif %}
+<meta property="og:type" content="article" />
+<meta property="og:title" content="{{ current_page.title }} | {{ site_title }}" />
+<meta property="og:description" content="{{ meta.description }}" />
+<meta property="og:url" content="{{ current_page.url }}" />
+<meta property="og:site_name" content="{{ site_title }}" />
+
+<!-- <link href='http://fonts.googleapis.com/css?family=Fjalla+One|Lato:400,400italic' rel='stylesheet' type='text/css'> -->
+<link href='http://fonts.googleapis.com/css?family=Bevan|Open+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{{ theme_url }}/css/normalize.css" type="text/css" />
+<link rel="stylesheet" href="{{ theme_url }}/css/cutegrids.css" type="text/css" />
+<link rel="stylesheet" href="{{ theme_url }}/css/styles.css" type="text/css" />
+</script>

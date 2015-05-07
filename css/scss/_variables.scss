@@ -1,0 +1,68 @@
+/*********************
+******* COLORS *******
+**********************/
+$cback: #424242;
+$ctext: #000;
+$clink: #b44646;
+$clinkh : #e2595b;
+
+/*********************
+***** TYPOGRAPHY *****
+**********************/
+$font_title: 'Bevan', cursive;
+$font_text: 'Open Sans', sans-serif;
+$font_text_size: 16px;
+
+/*********************
+******* LAYOUT *******
+**********************/
+$marge: 0.65rem;
+$hfoot: 44px;
+
+/*********************
+******* MIXINS *******
+**********************/
+
+// border-radius from http://codepen.io/Simek/pen/Frxhq
+$prefixes: -webkit-, -moz-, -o-, "";
+@mixin borderRadius($size...) {
+	@if length($size) == 1 {
+		@each $prefix in $prefixes {
+			#{$prefix}border-radius: $size;
+		}
+	} @else {
+		@include customBorderRadius($size...);
+	}
+}
+
+@mixin customBorderRadius($topLeft: 0, $topRight: 0, $bottomRight: 0, $bottomLeft: 0) {
+	@each $prefix in $prefixes {
+		@if $prefix == "-moz-" {
+			@if $topLeft != 0 { -moz-border-radius-topleft: $topLeft; }
+			@if $topRight != 0 { -moz-border-radius-topright: $topRight; }
+			@if $bottomRight != 0 { -moz-border-radius-bottomright: $bottomRight; }
+			@if $bottomLeft != 0 { -moz-border-radius-bottomleft: $bottomLeft; }
+		} @else {
+			@if $topLeft != 0 { #{$prefix}border-top-left-radius: $topLeft; }
+			@if $topRight != 0 { #{$prefix}border-top-right-radius: $topRight; }
+			@if $bottomRight != 0 { #{$prefix}border-bottom-right-radius: $bottomRight; }
+			@if $bottomLeft != 0 { #{$prefix}border-bottom-left-radius: $bottomLeft; }
+		}
+	}
+}
+
+// Transitions from http://codeboxers.com/sass-mixin-for-transitions/
+@mixin transition($transition-property, $transition-time, $method) {
+    -webkit-transition: $transition-property $transition-time $method;
+    -moz-transition: $transition-property $transition-time $method;
+    -ms-transition: $transition-property $transition-time $method;
+    -o-transition: $transition-property $transition-time $method;
+    transition: $transition-property $transition-time $method;
+}
+
+// box-shadow
+@mixin boxshadow($params...) {
+	@each $prefix in $prefixes {
+		#{$prefix}box-shadow: #{$params}
+	}
+}

@@ -1,0 +1,19 @@
+<p class="nav_title">Les émissions</p>
+<ul class="nav">
+	{% for page in pages %}
+		{% if page.title != 'Accueil' and page.title starts with '#' %}
+			<li {% if meta.title == page.title %}class="active"{% endif %}><a href="{{ page.url }}">{{ page.title }}</a></li>
+		{% endif %}
+	{% endfor %}
+</ul>
+{% if meta.title == 'Accueil' %}
+<script>
+	$(document).ready(function() {
+		$(".nav li").first().addClass("active");
+	});
+</script>
+{% endif %}
+<p class="nav_title">L'émission</p>
+<p>
+	L'Effet Coléoptère est une émission bénévole (bi)mensuelle diffusée un lundi sur deux à 22 heures sur la radio <a href="http://www.beaubfm.org/" target="_blank">Beaub'FM 89</a>.
+</p>

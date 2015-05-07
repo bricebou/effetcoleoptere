@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr" class="no-js">
+	<head>
+		{% include 'inc/head.html' %}
+
+		<!-- jPlayer scripts -->
+		<script type="text/javascript" src="{{ theme_url }}/js/jPlayer/lib/jquery.min.js"></script>
+		<script type="text/javascript" src="{{ theme_url }}/js/jPlayer/dist/jplayer/jquery.jplayer.min.js"></script>
+	</head>
+
+	<body>
+		<div id="wrapper">
+			<header>
+				{% include 'inc/header.html' %}
+			</header>
+			
+			{% if meta.title == 'Accueil' %}
+				{% include 'inc/annonce.html' %}
+			{% endif %}
+
+			<div id="main" class="row">
+	
+				<nav class="cute-4-laptop cute-4-tablet">
+					{% include 'inc/nav.html' %}
+				</nav>
+
+				<section id="content" class="cute-8-laptop cute-8-tablet cute-12-phone">
+
+						<h2 class="page_title">{{ meta.title }}</h2>
+
+			    	<div class="creators">
+			    		<p class="meta">Une émission diffusée le <span class="date">{{ meta.date|datefr(config.date_format) }}</span>.</p>
+			    	</div>
+
+						<div id="jquery_jplayer_{{ meta.title|slice(1, 2)|trim }}" class="jp-jplayer"></div>
+						<div id="jp_container_{{ meta.title|slice(1, 2)|trim }}" class="jp-audio" role="application" aria-label="media player">
+							<div class="jp-type-single">
+								<div class="jp-gui jp-interface">
+									<div class="jp-volume-controls">
+										<button class="jp-mute" role="button" tabindex="0"><i class="fa fa-volume-off"></i></button>
+										<button class="jp-volume-max" role="button" tabindex="0"><i class="fa fa-volume-up"></i></button>
+										<div class="jp-volume-bar">
+											<div class="jp-volume-bar-value"></div>
+										</div>
+									</div>
+									<div class="jp-controls-holder">
+										<div class="jp-controls">
+											<button class="jp-play" role="button" tabindex="0"><i class="fa fa-play"></i></button>
+											<button class="jp-pause" role="button" tabindex="0"><i class="fa fa-pause"></i></button>
+											<button class="jp-stop" role="button" tabindex="0"><i class="fa fa-stop"></i></button>
+										</div>
+										<div class="jp-progress">
+											<div class="jp-seek-bar">
+												<div class="jp-play-bar"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="jp-details">
+									<div class="jp-current-time" role="timer" aria-label="time">&nbsp;</div>
+									<div class="jp-duration" role="timer" aria-label="duration">&nbsp;</div>
+									<div class="jp-title" aria-label="title">&nbsp;</div>
+								</div>
+								<div class="jp-no-solution">
+									<span>Update Required</span>
+									To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+								</div>
+							</div>
+						</div>
+						
+			    	{{ content }}
+
+			    	<h3>La Playlist</h3>
+
+			    	{{ CSVtoTable(meta.csv) }}
+
+			    	<div class="tags">
+			    		<h3>Artistes &amp; réalisateurs</h3>
+
+			    		{% for tag in meta.tags_array %}
+                <a href="{{ base_url }}/tag/{{ tag }}">#{{ tag }}</a>
+            	{% endfor %}
+			    	</div>
+
+			    	<div class="pagination_article">
+			    		{% for page in pages %}
+					    	{% if current_page.title == page.title %}
+		              {% if page.nextPage is defined and page.nextPage.meta.title starts with '#' %}
+		                  <a href="{{ page.nextPage.url }}" class="pa_recent">
+		                      <div class="pa_arrow"><i class="fa fa-angle-double-left"></i></div>
+		                      <div class="pa_title">
+		                          <span class="pa_date">{{ page.nextPage.meta.date|datefr(config.date_format) }}</span>
+		                          <br>
+		                          <span>{{ page.nextPage.meta.title }}</span>
+		                      </div>
+		                  </a>    
+		              {% endif %} 
+		              {% if page.previousPage is defined and page.previousPage.meta.title starts with '#' %}
+		                  <a href="{{ page.previousPage.url }}" class="pa_older">
+		                      <div class="pa_title">
+		                          <span>{{ page.previousPage.title }}</span>
+		                          <br>
+		                          <span class="pa_date">{{page.previousPage.meta.date|datefr(config.date_format) }}</span>
+		                      </div>
+		                      <div class="pa_arrow"><i class="fa fa-angle-double-right"></i></div>
+		                  </a>
+		              {% endif %}
+		            {% endif %}
+							{% endfor %}
+            </div>
+
+			    {# END blog posts #}
+				</section>
+			</div> <!-- END .row -->
+
+			<footer>
+				{% include 'inc/footer.html' %}
+			</footer>
+
+		</div> <!-- END #wrapper -->
+		
+		
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('#jquery_jplayer_{{ meta.title|slice(1, 2)|trim }}').jPlayer({ready: function () {
+					$(this).jPlayer("setMedia", {
+						title: "{{ meta.title }}",
+						mp3: "{{ meta.audio }}"
+					});
+				},
+				swfPath: "{{ theme_url }}/ec/js/jPlayer/dist/jplayer",
+				supplied: "mp3",
+				cssSelectorAncestor: "#jp_container_{{ meta.title|slice(1, 2)|trim }}",
+				wmode: "window",
+				useStateClassSkin: true,
+				autoBlur: false,
+				smoothPlayBar: true,
+				keyEnabled: true,
+				remainingDuration: true,
+				toggleDuration: true
+				});
+			});
+		</script>
+	</body>
+</html>

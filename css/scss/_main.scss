@@ -1,0 +1,558 @@
+/*******************************************
+************** KEEPING THE FOOTER **********
+**************** AT THE BOTTOM *************
+*******************************************/
+/*
+  Thanks to http://www.cssreset.com/how-to-keep-footer-at-bottom-of-page-with-css/
+*/
+html,
+body {
+  margin:0;
+  padding:0;
+  height:100%;
+  color: $ctext;
+}
+#wrapper {
+  min-height:100%;
+  position:relative;
+}
+#main {
+  padding-bottom: $hfoot;
+}
+header {
+  background-color: $cback;
+  text-align: center;
+  padding: 1.95rem 0 1.3rem;
+  h1 {
+    font-size: 3rem;
+    text-shadow: 1px 1px 1px #000;
+
+    &:hover {
+      text-shadow: 0px 0px 0px #000;
+    }
+  }
+  .slogan {
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  a,
+  a:hover,
+  a:focus,
+  a:active,
+  a:visited {
+    color: #fff;
+  }
+}
+footer {
+  background:$cback;
+  width:100%;
+  position:absolute;
+  bottom:0;
+  left:0;
+  height: $hfoot;
+}
+
+/*******************************************
+************** GENERAL *********************
+*******************************************/
+/*
+  Basé en partie sur skeletoncss http://getskeleton.com/
+*/
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Links
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+a,
+a:visited {
+  color: $clink;
+  text-decoration: none;
+  -webkit-transition: color 0.2s ease;
+  -moz-transition: color 0.2s ease;
+  -ms-transition: color 0.2s ease;
+  -o-transition: color 0.2s ease;
+  transition: color 0.2s ease;
+}
+
+a:hover,
+a:focus,
+a:active {
+  color: $clinkh;
+  text-decoration: none;
+}
+
+a[href^="http"]:before {
+  font-family: "FontAwesome";
+  content: "\00A0\f08e\00A0";
+  font-size: 0.8rem;
+}
+
+a[href^="http://ec.localhost"]:before,
+a[href^="http://efcol.localhost"]:before,
+a[href^="http://leffetcoleoptere.bz"]:before { 
+  font-family: "FontAwesome";
+  content: "";
+}
+
+/* Tables
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+table {
+  width: 100%;
+
+  th,
+  td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #E1E1E1;
+
+    &:first-child {
+      padding-left: 0;
+      font-style: italic;
+    }
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+}
+
+.playlist_year {
+  font-size: 0.8rem;
+}
+/*******************************************
+***************** ANNONCE ******************
+*******************************************/
+#annonce {
+  background-color: $clink;
+  color: #fff;
+  font-style: italic;
+  text-align: center;
+}
+/*******************************************
+****************** NAV *********************
+*******************************************/
+
+nav {
+
+  p.nav_title {
+    font-family: $font_title;
+    font-size: 1.3rem;
+    font-variant: small-caps;
+    padding: 2*$marge 0;
+    text-align: center;
+  }
+
+  ul {
+    list-style: none;
+
+    li {
+      font-weight: 700;
+      text-transform: uppercase;
+      border-top: 0.5px solid $cback;
+      color: $clink;
+      background-color: #fff;
+      -webkit-transition: all 0.2s ease;
+         -moz-transition: all 0.2s ease;
+          -ms-transition: all 0.2s ease;
+           -o-transition: all 0.2s ease;
+              transition: all 0.2s ease;
+
+      a {
+        display: block;
+        height: 100%;
+        padding: $marge;
+      }
+      a,
+      a:visited,
+      a:hover,
+      a:focus,
+      a:active {
+        color: unset;
+      }
+      
+
+      &:last-of-type {
+        border-bottom: 0.5px solid $cback;
+      }
+
+      &:hover {
+        background-color: $clink;
+        color: #fff;
+      }
+      &.active {
+        background-color: $cback;
+        color: #fff;
+      }
+    }
+
+  }
+}
+
+/*******************************************
+******************* SHOWS ******************
+*******************************************/
+.page_title {
+  margin-bottom: 0;
+  padding: 2*$marge 0 $marge;
+}
+
+.creators {
+  text-align: center;
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .meta {
+    text-align: left;
+    margin-bottom: 1rem;
+  }
+  .creator {
+    height: 8rem;
+    width: 8rem;
+    text-align: center;
+    display: inline-block;  
+
+    .avatar {
+      @include borderRadius(50%);
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      height: 6rem;
+      width: 6rem;
+      margin: 0 auto;
+    }
+    &#marie .avatar {
+      background-image: url('img/chiffon.png');
+    }
+    &#franck .avatar {
+      background-image: url('img/red_barbe.jpg');
+    }
+    &#brice .avatar {
+      background-image: url('img/belmondo_avatar.png');
+    }
+    &#olivier .avatar {
+      background-image: url('img/belmondo_avatar.png');
+    }
+  }
+  #creator_par {
+    line-height: 6rem;
+    span {
+      line-height: normal;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+}
+
+
+.tags {
+  margin-top: 3*$marge;
+}
+
+.pagination {
+  margin: 3rem 0 3*$marge;
+  padding-top: 3*$marge;
+  position: relative;
+
+  > a {
+    position: absolute;
+    bottom: 0;
+    display: block;
+    height: 3rem;
+    line-height: 3rem;
+    padding: 0 $marge;
+    background-color: $clink;
+    color: #fff;
+    -webkit-transition: background-color 0.2s ease;
+    -moz-transition: background-color 0.2s ease;
+    -ms-transition: background-color 0.2s ease;
+    -o-transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: $clinkh;
+      color: #fff;
+    }
+
+    span {
+      display: inline-block;
+      line-height: normal;
+      vertical-align: middle;
+    }
+
+    &.previous {
+      left: 0;
+    }
+
+    &.next {
+      right: 0;
+    }
+  }
+}
+
+.pagination_article {
+  border-top: 1px solid $clink;
+  margin-top: 3rem;
+  padding-top: 1rem;
+
+  & a {
+    text-align:center;
+    display: block;
+    position: relative;
+
+    &.pa_older {
+      & .pa_arrow {
+        margin-left: 2%;
+      }
+      & .pa_title {
+        text-align: right;
+      }
+    } 
+    &.pa_recent .pa_arrow {
+      margin-right: 2%;
+    }
+
+    & div {
+      display:inline-block;
+      vertical-align:middle;
+      text-align:left;
+      &.pa_arrow {
+        font-size: 2rem;
+        width: 1.5rem;
+
+        
+      }
+      &.pa_title {
+        max-width: 75%;
+        & span {
+          // font-size: 0.8rem;
+        }
+        & .pa_date {
+          font-style: italic;
+          display: inline-block;
+          width: 100%;
+          font-size: 0.7rem;
+        }
+      }
+    }
+    
+  }
+  // @media screen and (min-width: 700px) {
+    & .pa_older .pa_arrow {
+      margin-left: 1rem;
+      transition: margin-left 0.8s ease 0.1s;
+    }
+    & .pa_recent .pa_arrow {
+      margin-right: 1rem;
+      transition: margin-right 0.8s ease 0.1s;
+    }
+    & .pa_older:hover .pa_arrow {
+      
+      margin-left: 3rem;
+    }
+    & .pa_recent:hover .pa_arrow {
+      margin-right: 3rem;
+    }
+  // } 
+}
+
+/* jPlayer (with some styles from the bluemonday theme)
+––––––––––––––––––––––––––––––––––––––––––––––––––––––– */
+.jp-audio *:focus {
+  /* Disable the browser focus highlighting. */
+  outline: none;
+}
+
+.jp-audio button::-moz-focus-inner {
+  /* Disable the browser CSS3 focus highlighting. */
+  border: 0;
+}
+
+.jp-audio {
+  font-size: 16px;
+  font-family: Verdana, Arial, sans-serif;
+  line-height: 1.6;
+  color: #666;
+  border: 1px solid $clink;
+  background-color: #eee;
+  width: 100%!important;
+  margin: 3*$marge 0;
+
+  .jp-interface {
+    position: relative;
+    background-color: #eee;
+    width: 100%;
+    height: 80px;
+    
+    .jp-controls-holder {
+      clear: both;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+      .jp-controls {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        width: 120px;
+        height: 100%;
+        position: absolute;
+
+        button {
+          display: block;
+          float: left;
+          border: none;
+          cursor: pointer;
+          position: relative;
+          background: none;
+
+          &.jp-play,
+          &.jp-pause {
+            font-size: 2rem;
+            left: 36px;
+            top: 12px;
+
+          }
+          &.jp-stop {
+            font-size: 1.2rem;
+            left: 45px;
+            top: 22px;
+          }
+        }
+
+      }
+      .jp-progress {
+        width: 100%;
+        bottom: 0px;
+        left: 0;
+        overflow: hidden;
+        background-color: #ddd;
+        position: absolute;
+        height: 15px; 
+        .jp-seek-bar {
+          background-color: $clink;
+          width: 0px;
+          height: 100%;
+          cursor: pointer;
+          .jp-play-bar {
+            background-color: $clinkh;
+            width: 0px;
+            height: 100%;
+          }
+        }
+      }
+    }
+    .jp-volume-controls {
+      position: absolute;
+      top: 32px;
+      width: 200px;
+      z-index: 200;
+      left: 140px;
+
+      button {
+        display: block;
+        position: absolute;
+        border: none;
+        cursor: pointer;
+        background: none;
+
+        &.jp-mute,
+        &.jp-volume-max {
+          width: 18px;
+          height: 15px;
+          top: -6px;
+        }
+
+        &.jp-volume-max {
+          left: 74px;
+        }
+      }
+      .jp-volume-bar {
+        position: absolute;
+        overflow: hidden;
+        background-color: $clink;;
+        top: 5px;
+        left: 22px;
+        width: 46px;
+        height: 5px;
+        cursor: pointer;
+
+        .jp-volume-bar-value {
+          background-color: $clinkh;
+          width: 0px;
+          height: 5px;
+        }
+      }
+    }
+  }
+  .jp-details {
+    border-top: none ;
+    position: relative;
+    font-weight: bold;
+    text-align: center;
+    cursor: default;
+    width: 100%;
+    background-color: #ccc;
+
+    .jp-title {
+      margin: 0;
+      padding: 5px 20px;
+      font-size: .72em;
+      font-weight: bold;
+    }
+
+    .jp-current-time,
+    .jp-duration {
+      width: 80px;
+      color: #fff;
+      font-size: 0.8em;
+      font-weight: bold;
+      font-style: oblique;
+    }
+    .jp-current-time {
+      float: left;
+      text-align: left;
+      display: inline;
+      cursor: default; 
+    }
+    .jp-duration {
+      float: right;
+      display: inline;
+      text-align: right;
+      cursor: pointer;
+    }
+  }
+  button:hover {
+    color: $clinkh;
+  }
+  button:active {
+    color: $clink;
+  }
+}
+
+/*******************************************
+****************** FOOTER ******************
+*******************************************/
+
+footer {
+
+  .about {
+    float: right;
+
+    a {
+      color: #000;
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: #000;
+        text-decoration: underline;
+      }
+    }
+  }
+}

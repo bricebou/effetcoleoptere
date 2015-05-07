@@ -23,11 +23,11 @@
 
 			<div id="main" class="row">
 	
-				<nav class="cute-4-laptop cute-4-tablet">
+				<nav class="cute-4-laptop hide-tablet hide-phone">
 					{% include 'inc/nav.html' %}
 				</nav>
 
-				<section id="content" class="cute-8-laptop cute-8-tablet cute-12-phone">
+				<section id="content" class="cute-8-laptop cute-12-tablet">
 					{# front page :  check the title of the content root index.md #}
 
 			    {% if meta.title == 'Accueil' %}
@@ -42,18 +42,18 @@
 						<div id="jp_container_{{ pages[0].title|slice(1, 2)|trim }}" class="jp-audio" role="application" aria-label="media player">
 							<div class="jp-type-single">
 								<div class="jp-gui jp-interface">
-									<div class="jp-volume-controls">
-										<button class="jp-mute" role="button" tabindex="0"><i class="fa fa-volume-off"></i></button>
-										<button class="jp-volume-max" role="button" tabindex="0"><i class="fa fa-volume-up"></i></button>
-										<div class="jp-volume-bar">
-											<div class="jp-volume-bar-value"></div>
-										</div>
-									</div>
 									<div class="jp-controls-holder">
 										<div class="jp-controls">
 											<button class="jp-play" role="button" tabindex="0"><i class="fa fa-play"></i></button>
 											<button class="jp-pause" role="button" tabindex="0"><i class="fa fa-pause"></i></button>
 											<button class="jp-stop" role="button" tabindex="0"><i class="fa fa-stop"></i></button>
+										</div>
+										<div class="jp-volume-controls">
+											<button class="jp-mute" role="button" tabindex="0"><i class="fa fa-volume-off"></i></button>
+											<button class="jp-volume-max" role="button" tabindex="0"><i class="fa fa-volume-up"></i></button>
+											<div class="jp-volume-bar">
+												<div class="jp-volume-bar-value"></div>
+											</div>
 										</div>
 										<div class="jp-progress">
 											<div class="jp-seek-bar">

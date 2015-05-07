@@ -14,7 +14,8 @@
 html {
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
-  line-height: 1.45; }
+  line-height: 1.45;
+  -webkit-overflow-scrolling: touch; }
 
 h1,
 h2,
@@ -76,7 +77,7 @@ header {
   text-align: center;
   padding: 1.95rem 0 1.3rem; }
   header h1 {
-    font-size: 3rem;
+    font-size: 2.4rem;
     text-shadow: 1px 1px 1px #000; }
     header h1:hover {
       text-shadow: 0px 0px 0px #000; }
@@ -140,8 +141,15 @@ a[href^="http://leffetcoleoptere.bz"]:before {
 
 /* Tables
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+.table-respond {
+  overflow-x: auto;
+  width: 100%;
+  max-width: 100%; }
+
 table {
-  width: 100%; }
+  width: 100%;
+  margin: 0;
+  border-collapse: collapse; }
   table th,
   table td {
     padding: 12px 15px;
@@ -398,37 +406,45 @@ nav ul {
             background-color: #e2595b;
             width: 0px;
             height: 100%; }
-    .jp-audio .jp-interface .jp-volume-controls {
-      position: absolute;
-      top: 32px;
-      width: 200px;
-      z-index: 200;
-      left: 140px; }
-      .jp-audio .jp-interface .jp-volume-controls button {
-        display: block;
-        position: absolute;
-        border: none;
-        cursor: pointer;
-        background: none; }
-        .jp-audio .jp-interface .jp-volume-controls button.jp-mute, .jp-audio .jp-interface .jp-volume-controls button.jp-volume-max {
-          width: 18px;
-          height: 15px;
-          top: -6px; }
-        .jp-audio .jp-interface .jp-volume-controls button.jp-volume-max {
-          left: 74px; }
-      .jp-audio .jp-interface .jp-volume-controls .jp-volume-bar {
-        position: absolute;
-        overflow: hidden;
-        background-color: #b44646;
-        top: 5px;
-        left: 22px;
-        width: 46px;
-        height: 5px;
-        cursor: pointer; }
-        .jp-audio .jp-interface .jp-volume-controls .jp-volume-bar .jp-volume-bar-value {
-          background-color: #e2595b;
-          width: 0px;
-          height: 5px; }
+      .jp-audio .jp-interface .jp-controls-holder .jp-volume-controls {
+        display: none; }
+      @media screen and (min-width: 47.938em) {
+        .jp-audio .jp-interface .jp-controls-holder .jp-volume-controls {
+          display: block;
+          height: 100%;
+          left: 110px;
+          position: absolute;
+          top: 0;
+          width: 140px;
+          margin: 0;
+          overflow: hidden;
+          padding: 0; }
+          .jp-audio .jp-interface .jp-controls-holder .jp-volume-controls button {
+            display: block;
+            position: absolute;
+            border: none;
+            cursor: pointer;
+            background: none; }
+            .jp-audio .jp-interface .jp-controls-holder .jp-volume-controls button.jp-mute, .jp-audio .jp-interface .jp-controls-holder .jp-volume-controls button.jp-volume-max {
+              width: 20px;
+              height: 28px;
+              top: 20px;
+              font-size: 1.2rem; }
+            .jp-audio .jp-interface .jp-controls-holder .jp-volume-controls button.jp-volume-max {
+              left: 74px; }
+          .jp-audio .jp-interface .jp-controls-holder .jp-volume-controls .jp-volume-bar {
+            position: absolute;
+            overflow: hidden;
+            background-color: #b44646;
+            top: 32px;
+            left: 22px;
+            width: 46px;
+            height: 7px;
+            cursor: pointer; }
+            .jp-audio .jp-interface .jp-controls-holder .jp-volume-controls .jp-volume-bar .jp-volume-bar-value {
+              background-color: #e2595b;
+              width: 0px;
+              height: 7px; } }
   .jp-audio .jp-details {
     border-top: none;
     position: relative;

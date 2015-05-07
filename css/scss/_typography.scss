@@ -2,6 +2,7 @@ html {
   font-family: $font_text;
   font-size: $font_text_size;
   line-height: 1.45;
+  -webkit-overflow-scrolling: touch;
 }
 
 h1,

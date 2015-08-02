@@ -8,3 +8,18 @@
 		</span>
 	</div>
 </div>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		adjustMainSize();
+	});
+	$(window).bind('resize orientationchange', function() {
+		adjustMainSize();
+	});
+	var adjustMainSize = function() {
+		// var hf = $("footer").height() + 6 + 30;
+		$("footer").css("height", "auto");
+		var hf = $("footer").height();
+    $("#main").css("padding-bottom", hf);	
+	}
+</script>

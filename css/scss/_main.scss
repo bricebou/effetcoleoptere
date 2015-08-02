@@ -16,9 +16,9 @@ body {
   min-height:100%;
   position:relative;
 }
-#main {
-  padding-bottom: $hfoot;
-}
+// #main {
+//   padding-bottom: $hfoot;
+// }
 header {
   background-color: $cback;
   text-align: center;
@@ -50,7 +50,7 @@ footer {
   position:absolute;
   bottom:0;
   left:0;
-  height: $hfoot;
+  // height: $hfoot;
 }
 
 /*******************************************
